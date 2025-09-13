@@ -1,1 +1,358 @@
-Placeholder 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leyla Loued‑Khenissi — Cognitive Neuroscientist</title>
+  <meta name="description" content="[Your Name] — academic homepage. Research in cognitive neuroscience, fMRI, predictive coding, decision-making under uncertainty." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="[Your Name] — Academic Homepage" />
+  <meta property="og:description" content="Research in cognitive neuroscience, fMRI, predictive coding, decision-making under uncertainty." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-username.github.io/" />
+  
+  <!-- Schema.org Person (basic) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Leyla Loued‑Khenissi",
+    "jobTitle": "Computational Cognitive Neuroscientist",
+    "affiliation": {"@type":"Organization","name":"CHUV (Centre Hospitalier Universitaire Vaudois)"},
+    "url": "https://your-username.github.io/",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=0U5tDFoAAAAJ",
+      "https://orcid.org/0000-0003-3241-6492",
+      "https://github.com/",
+      "https://www.linkedin.com/in/your-username/"
+    ]
+  }
+  </script>
+
+  <style>
+    /* --- Design tokens --- */
+    :root {
+      --bg: #ffffff;
+      --text: #1f2430;
+      --muted: #5b6476;
+      --brand: #0a66c2; /* link / accents */
+      --line: #e8ebf2;
+      --card: #f9fafc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1116;
+        --text: #e6e9ef;
+        --muted: #a7afc0;
+        --brand: #5aa7ff;
+        --line: #1f2533;
+        --card: #151a22;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* --- Layout --- */
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+
+    header.site {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: var(--card); border: 1px solid var(--line); }
+    .brand .title { display: grid; }
+    .brand h1 { font-size: 1.25rem; line-height: 1.2; margin: 0; }
+    .brand .sub { font-size: 0.95rem; color: var(--muted); }
+
+    nav a { padding: 10px 12px; border-radius: 10px; }
+    nav a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 8px; }
+
+    /* --- Hero --- */
+    .hero { padding: 48px 0 16px; }
+    .hero h2 { font-size: clamp(2rem, 1.2rem + 2.5vw, 3rem); margin: 0 0 12px; }
+    .hero p.lead { font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.25rem); color: var(--muted); margin: 0; }
+
+    /* --- Section --- */
+    section { padding: 40px 0; border-top: 1px solid var(--line); }
+    section:first-of-type { border-top: 0; }
+    section h3 { font-size: 1.4rem; margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+
+    /* --- Publications --- */
+    .pubs { display: grid; gap: 16px; }
+    .pub { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .pub .title { font-weight: 600; }
+    .pub .meta { color: var(--muted); font-size: 0.95rem; }
+    .pub .links { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+
+    /* --- Projects --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: clip; display: grid; }
+    .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in oklab, var(--card), #cde4ff 30%), var(--card)); border-bottom: 1px solid var(--line); }
+    .card .content { padding: 14px 16px 16px; }
+    .card h4 { margin: 0 0 6px; font-size: 1.05rem; }
+    .tag { display: inline-block; font-size: 0.8rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+    /* --- Lists --- */
+    .list { padding-left: 18px; }
+
+    /* --- Footer --- */
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); }
+
+    /* --- Small --- */
+    @media (max-width: 720px) {
+      .brand img { width: 44px; height: 44px; }
+      nav { display: none; } /* keep it ultra-minimal on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Accessible skip link -->
+  <a href="#about" class="muted" style="position:absolute;left:-9999px;">Skip to content</a>
+
+  <header class="site" role="banner">
+    <div class="container site-inner">
+      <div class="brand">
+        <!-- Replace src with your own square headshot (e.g., /assets/profile.jpg) -->
+        <img src="https://via.placeholder.com/160" alt="[Your Name] profile photo" />
+        <div class="title">
+          <h1>Leyla Loued‑Khenissi, PhD</h1>
+          <div class="sub">Cognitive Neuroscientist · CHUV — Dept. of Clinical Neurosciences</div>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#press">Press</a>
+        <a href="#talks">Talks</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="hero">
+      <div class="container">
+        <h2>Understanding how uncertainty and expectations shape perception, pain, and social judgment.</h2>
+        <p class="lead">I study how predictive processes and ambiguity influence experience and choice, using fMRI, behavioral experiments, and computational modeling (predictive coding, information‑theoretic variables, DCM). I am currently a researcher at <strong>CHUV</strong> in Lausanne.</p>
+        <p class="muted">Keywords: predictive processing, uncertainty & surprise, pain valuation, effective connectivity, model‑based fMRI.</p>
+        <p>
+          <a href="/cv.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          · <a href="https://scholar.google.com/citations?user=0U5tDFoAAAAJ" target="_blank" rel="noopener">Google&nbsp;Scholar</a>
+          · <a href="https://orcid.org/0000-0003-3241-6492" target="_blank" rel="noopener">ORCID</a>
+          · <a href="https://medium.com/@leylalouedkhenissi" target="_blank" rel="noopener">Medium</a>
+          · <a href="https://psyche.co/authors/leyla-loued-khenissi" target="_blank" rel="noopener">Psyche Magazine</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="publications" aria-labelledby="pubs-heading">
+      <div class="container">
+        <h3 id="pubs-heading">Selected Publications</h3>
+        <div class="pubs">
+          <div class="pub"><div class="title">Highlights</div><div class="meta muted">Representative works</div></div>
+          <article class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <div class="title" itemprop="name">Pain Expectations: the neural representations of predicted pain in self and others</div>
+            <div class="meta"><span itemprop="author">Loued‑Khenissi, L., Bergmann, G. A., & Corradi‑Dell’Acqua, C.</span> · <span itemprop="datePublished">2025</span> · <em>bioRxiv</em></div>
+            <div class="links">
+              <a href="https://www.biorxiv.org/content/10.1101/2025.07.21.666065v1" itemprop="sameAs">Preprint</a>
+              <a href="https://doi.org/10.1101/2025.07.21.666065" itemprop="sameAs">DOI</a>
+              <button aria-expanded="false" aria-controls="bib_pe" class="tag" onclick="toggleBib('bib_pe', this)">BibTeX</button>
+            </div>
+            <pre id="bib_pe" hidden>@article{LouedKhenissi2025PainExpectations,
+  title={Pain Expectations: the neural representations of predicted pain in self and others},
+  author={Loued-Khenissi, L. and Bergmann, G. A. and Corradi-Dell'Acqua, C.},
+  journal={bioRxiv},
+  year={2025},
+  doi={10.1101/2025.07.21.666065}
+}</pre>
+          </article>
+
+          <article class="pub" itemscope itemtype="https://schema.org/ScholarlyArticle">
+            <div class="title" itemprop="name">The effect of uncertainty on pain decisions for self and others</div>
+            <div class="meta"><span itemprop="author">Loued‑Khenissi, L., Martin‑Brevet, S., Schumacher, L. J., & Corradi‑Dell’Acqua, C.</span> · <span itemprop="datePublished">2022</span> · <em>European Journal of Pain</em></div>
+            <div class="links">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9322544/">Open Access</a>
+              <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ejp.1940">Publisher</a>
+              <button aria-expanded="false" aria-controls="bib_ejp" class="tag" onclick="toggleBib('bib_ejp', this)">BibTeX</button>
+            </div>
+            <pre id="bib_ejp" hidden>@article{LouedKhenissi2022PainUncertainty,
+  title={The effect of uncertainty on pain decisions for self and others},
+  author={Loued-Khenissi, L. and Martin-Brevet, S. and Schumacher, L. J. and Corradi-Dell'Acqua, C.},
+  journal={European Journal of Pain},
+  year={2022},
+  doi={10.1002/ejp.1940}
+}</pre>
+          </article>
+
+          <div class="pub"><div class="title">Predictive coding & uncertainty</div><div class="meta muted">Neural markers of surprise, information gain, confidence</div></div>
+          <article class="pub">
+            <div class="title">Anterior insula reflects surprise in value‑based decision‑making and perception</div>
+            <div class="meta">NeuroImage, 2020</div>
+            <div class="links">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/31954844/">PubMed</a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S1053811920300367">Publisher</a>
+            </div>
+          </article>
+          <article class="pub">
+            <div class="title">Information Theoretic Characterization of Uncertainty Distinguishes Surprise from Accuracy Signals in the Brain</div>
+            <div class="meta">Frontiers in Artificial Intelligence, 2020</div>
+            <div class="links">
+              <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2020.00005/full">Open Access</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33733125/">PubMed</a>
+            </div>
+          </article>
+
+          <div class="pub"><div class="title">Imaging & methods</div><div class="meta muted">Large‑scale cohorts, quantitative MRI</div></div>
+          <article class="pub">
+            <div class="title">Signatures of life course socioeconomic conditions in brain anatomy</div>
+            <div class="meta">Human Brain Mapping, 2022</div>
+            <div class="links">
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9057097/">Open Access</a>
+              <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.25807">Publisher</a>
+            </div>
+          </article>
+          <article class="pub">
+            <div class="title">Brain tissue properties link cardio‑vascular risk factors, mood and cognitive performance in the CoLaus|PsyCoLaus cohort</div>
+            <div class="meta">Neurobiology of Aging, 2021</div>
+            <div class="links">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33765431/">PubMed</a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S019745802100049X">Publisher</a>
+            </div>
+          </article>
+
+          <div class="pub"><div class="title">Out‑there & crossovers</div><div class="meta muted">Conceptual, philosophical, and space/VR contexts</div></div>
+          <article class="pub">
+            <div class="title">Echoes of the Abhidamma in the Component Process Model of Emotion</div>
+            <div class="meta">Journal of Theoretical and Philosophical Psychology, accepted 2023</div>
+          </article>
+          <article class="pub">
+            <div class="title">Microgravity induces overconfidence in perceptual decision‑making</div>
+            <div class="meta">Scientific Reports, 2023</div>
+            <div class="links">
+              <a href="https://www.nature.com/articles/s41598-023-36775-0">Open Access</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h3>Projects</h3>
+        <div class="grid">
+          <article class="card">
+            <div class="thumb" role="img" aria-label="PreddiBrains project"></div>
+            <div class="content">
+              <h4>PreddiBrains</h4>
+              <p class="muted">As PI, I investigate conscious versus unconscious inference using multi‑echo, model‑based fMRI. This project is funded by my Transition Grant (Faculté de Biologie et de Médecine, Lausanne).</p>
+              <span class="tag">PI · fMRI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb" role="img" aria-label="Dot-fragmented object recognition"></div>
+            <div class="content">
+              <h4>Object Recognition from Fragmented Inputs</h4>
+              <p class="muted">fMRI + shape-biased CNNs to model recognition under sparse evidence.</p>
+              <span class="tag">vision</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb" aria-label="Effective connectivity modeling"></div>
+            <div class="content">
+              <h4>Effective Connectivity in Clinical Populations</h4>
+              <p class="muted">DCM/PEB pipelines to characterize network mechanisms in MS/PD/stroke.</p>
+              <span class="tag">DCM</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb" aria-label="Predictive coding and pain"></div>
+            <div class="content">
+              <h4>Predicting Pain in Self &amp; Others</h4>
+              <p class="muted">Bayesian inference of vicarious pain under uncertainty; model-based fMRI.</p>
+              <span class="tag">social</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="press">
+      <div class="container">
+        <h3>Essays & Press</h3>
+        <ul class="list">
+          <li><strong>Curriculum Vitae</strong> — <a href="/cv.pdf">Download PDF</a></li>
+          <li><strong>Psyche Magazine</strong> — <a href="https://psyche.co/ideas/allow-error-into-your-life-and-experience-the-joy-of-surprise">Allow error into your life and experience the joy of surprise</a> (2022)</li>
+          <li><strong>Blue Skies, Birdsong</strong> — <a href="/blue-skies-birdsong.pdf">PDF</a> · <a href="https://sites.lsa.umich.edu/mqr/2025/01/blueskies-birdsong/">MQR page</a> (2025)</li>
+          <li><strong>Medium</strong> — <a href="https://medium.com/@leylalouedkhenissi">@leylalouedkhenissi</a> (essays & notes)</li>
+          <li><strong>Zeitheist</strong> — <a href="http://www.zeitheist.org">Personal blog</a> (science, synaesthesia & creative writing)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="talks">
+      <div class="container">
+        <h3>Selected Talks</h3>
+        <ul class="list">
+          <li><strong>Keynote:</strong> Probabilistic representations in perception — <em>[Conference]</em>, <time datetime="2025-06-18">June 18, 2025</time></li>
+          <li>Effective connectivity for clinicians — <em>[Department Seminar]</em>, <time datetime="2025-03-15">Mar 15, 2025</time></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h3>Contact</h3>
+        <p>
+          <a href="mailto:lkhenissi@gmail.com" aria-label="Email">
+            <!-- envelope icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            lkhenissi@gmail.com
+          </a>
+          · <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          · <a href="https://www.linkedin.com/in/your-username/" target="_blank" rel="noopener">LinkedIn</a>
+          · <a href="https://orcid.org/0000-0003-3241-6492" target="_blank" rel="noopener">ORCID</a>
+        </p>
+        <p class="muted">Office: [Building, Room], [Institution], [City, Country]</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>&copy; <span id="year"></span> [Your Name]. All rights reserved.</div>
+      <div class="muted">Built with plain HTML + CSS. Deployed via GitHub Pages.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tiny BibTeX toggle helper
+    function toggleBib(id, btn) {
+      const el = document.getElementById(id);
+      const isHidden = el.hasAttribute('hidden');
+      if (isHidden) { el.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+      else { el.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); }
+    }
+  </script>
+</body>
+</html>
