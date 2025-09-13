@@ -37,15 +37,21 @@
     }
     html{box-sizing:border-box;scroll-behavior:smooth}
     *,*:before,*:after{box-sizing:inherit}
-    body{ margin:0; background:var(--bg); color:var(--text);
+    body{
+      margin:0; background:var(--bg); color:var(--text);
       font:17px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
-    a{color:var(--link); text-decoration:none} a:hover{text-decoration:underline}
-    h1,h2,h3{margin:0 0 .25em} h1{font-size:clamp(22px,1.5vw+18px,30px);font-weight:700}
-    h2{font-size:clamp(18px,1.2vw+14px,24px);font-weight:700} h3{font-size:18px;font-weight:600;color:var(--muted)}
-    p{margin:.5em 0 1em} .muted{color:var(--muted)}
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1,h2,h3{margin:0 0 .25em}
+    h1{font-size:clamp(22px,1.5vw+18px,30px);font-weight:700}
+    h2{font-size:clamp(18px,1.2vw+14px,24px);font-weight:700}
+    h3{font-size:18px;font-weight:600;color:var(--muted)}
+    p{margin:.5em 0 1em}
+    .muted{color:var(--muted)}
 
-    /* ===== Pop-art banner from your axial image ===== */
+    /* ===== Warhol-style banner from your axial image ===== */
     .banner-pop{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -54,31 +60,29 @@
       border-bottom:1px solid var(--line);
       overflow:hidden;
     }
+    /* Always show a pastel panel; blend the image over it */
     .banner-pop .panel{
-      background-image:url('t1Axial.jpg');    /* your uploaded file */
+      background-image:
+        linear-gradient(0deg, transparent, transparent),  /* ensures visible even if image fails */
+        url('t1Axial.jpg');                               /* exact case + location */
       background-size: cover;
-      background-position: center;            /* adjust if needed */
-      position:relative;
-      isolation:isolate;
-      mix-blend-mode: soft-light;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-blend-mode: soft-light;
     }
-    /* paper tint behind each panel */
-    .banner-pop .panel::before{
-      content:"";
-      position:absolute; inset:0; z-index:-1;
-    }
-    .banner-pop .p1::before{ background:#ffe3ec; }
-    .banner-pop .p2::before{ background:#fff1d6; }
-    .banner-pop .p3::before{ background:#dbfff2; }
-    .banner-pop .p4::before{ background:#dfeaff; }
+    /* Pastel tints per panel */
+    .banner-pop .p1{ background-color:#ffe3ec; }
+    .banner-pop .p2{ background-color:#fff1d6; }
+    .banner-pop .p3{ background-color:#dbfff2; }
+    .banner-pop .p4{ background-color:#dfeaff; }
 
-    /* tasteful color shifts per panel */
-    .banner-pop .p1{ filter: saturate(1.10) hue-rotate(-10deg) contrast(1.05); }
-    .banner-pop .p2{ filter: saturate(1.15) hue-rotate(30deg)  contrast(1.06); }
-    .banner-pop .p3{ filter: saturate(1.20) hue-rotate(-60deg) contrast(1.06); }
-    .banner-pop .p4{ filter: saturate(1.15) hue-rotate(120deg) contrast(1.05); }
+    /* Punchy but tasteful color shifts (Warhol-y) */
+    .banner-pop .p1{ filter: saturate(1.35) hue-rotate(-25deg) contrast(1.12) brightness(1.02); }
+    .banner-pop .p2{ filter: saturate(1.50) hue-rotate( 55deg) contrast(1.14) brightness(1.02); }
+    .banner-pop .p3{ filter: saturate(1.45) hue-rotate(-95deg) contrast(1.14) brightness(1.02); }
+    .banner-pop .p4{ filter: saturate(1.50) hue-rotate(150deg) contrast(1.12) brightness(1.02); }
 
-    /* subtle grain so it feels cohesive */
+    /* Optional: subtle grain for cohesion */
     .banner-pop .panel::after{
       content:"";
       position:absolute; inset:0;
@@ -87,17 +91,31 @@
       mix-blend-mode: multiply;
       pointer-events:none;
     }
+    .banner-pop .panel{ position:relative; isolation:isolate; }
 
     /* Layout */
-    .wrap{display:grid;grid-template-columns:280px 1fr;gap:40px;max-width:1100px;margin:0 auto;padding:36px 28px 48px;}
+    .wrap{
+      display:grid; grid-template-columns:280px 1fr; gap:40px;
+      max-width:1100px; margin:0 auto; padding:36px 28px 48px;
+    }
     aside{position:sticky;top:24px;align-self:start;}
-    .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;margin:0 0 16px;background:#ddd;}
+    .avatar{
+      width:112px;height:112px;border-radius:50%;object-fit:cover;
+      display:block;margin:0 0 16px;background:#ddd;
+    }
     .role{color:var(--muted);margin-top:.25rem}
-    nav{margin:18px 0 0} nav a{display:inline-block;margin:0 10px 6px 0;padding:4px 8px;border-radius:8px}
-    main{padding-top:6px} section{padding:22px 0} section+section{border-top:1px solid var(--line)}
+    nav{margin:18px 0 0}
+    nav a{display:inline-block;margin:0 10px 6px 0;padding:4px 8px;border-radius:8px}
+    main{padding-top:6px}
+    section{padding:22px 0}
+    section+section{border-top:1px solid var(--line)}
     .inline-links a{margin-right:10px}
-    .group{margin:6px 0 14px} .pub{margin:10px 0} .pub .t{font-weight:600} .meta{color:var(--muted);font-size:.95em}
-    .links a{margin-right:10px} .proj{margin:10px 0}
+    .group{margin:6px 0 14px}
+    .pub{margin:10px 0}
+    .pub .t{font-weight:600}
+    .meta{color:var(--muted);font-size:.95em}
+    .links a{margin-right:10px}
+    .proj{margin:10px 0}
     .badge{display:inline-block;font-size:.8em;padding:2px 8px;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--muted);margin-left:6px}
 
     @media (max-width:880px){
@@ -110,7 +128,7 @@
 </head>
 <body>
 
-  <!-- Pop-art axial banner (uses t1axial.jpg) -->
+  <!-- Warhol-style axial banner (uses t1Axial.jpg) -->
   <div class="banner-pop" aria-hidden="true">
     <span class="panel p1"></span>
     <span class="panel p2"></span>
