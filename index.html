@@ -77,10 +77,11 @@
     .banner-pop .p4{ background-color:#dfeaff; }
 
     /* Punchy but tasteful color shifts (Warhol-y) */
-    .banner-pop .p1{ filter: saturate(1.35) hue-rotate(-25deg) contrast(1.12) brightness(1.02); }
-    .banner-pop .p2{ filter: saturate(1.50) hue-rotate( 55deg) contrast(1.14) brightness(1.02); }
-    .banner-pop .p3{ filter: saturate(1.45) hue-rotate(-95deg) contrast(1.14) brightness(1.02); }
-    .banner-pop .p4{ filter: saturate(1.50) hue-rotate(150deg) contrast(1.12) brightness(1.02); }
+    .banner-pop .p1{ filter: saturate(1.8) hue-rotate(-25deg) contrast(1.18) brightness(1.10); }
+    .banner-pop .p2{ filter: saturate(2.0) hue-rotate( 55deg) contrast(1.20) brightness(1.10); }
+    .banner-pop .p3{ filter: saturate(1.9) hue-rotate(-95deg) contrast(1.20) brightness(1.10); }
+    .banner-pop .p4{ filter: saturate(2.0) hue-rotate(150deg) contrast(1.18) brightness(1.10); }
+
 
     /* Optional: subtle grain for cohesion */
     .banner-pop .panel::after{
@@ -92,6 +93,8 @@
       pointer-events:none;
     }
     .banner-pop .panel{ position:relative; isolation:isolate; }
+    background-blend-mode: overlay, soft-light; /* stronger blend */
+
 
     /* Layout */
     .wrap{
