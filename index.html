@@ -45,11 +45,50 @@
     h2{font-size:clamp(18px,1.2vw+14px,24px);font-weight:700} h3{font-size:18px;font-weight:600;color:var(--muted)}
     p{margin:.5em 0 1em} .muted{color:var(--muted)}
 
-    /* Banner */
-    .banner{display:block;width:100%;border-bottom:1px solid var(--line);
-      background:linear-gradient(90deg,#ffd9e5 0%,#ffeaa7 25%,#c7ffd8 50%,#c9e4ff 75%);}
-    .banner svg{display:block;width:100%;height:auto}
+    /* ===== Pop-art banner from your axial image ===== */
+    .banner-pop{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      width:100%;
+      height:220px;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .banner-pop .panel{
+      background-image:url('t1axial.jpg');    /* your uploaded file */
+      background-size: cover;
+      background-position: center;            /* adjust if needed */
+      position:relative;
+      isolation:isolate;
+      mix-blend-mode: soft-light;
+    }
+    /* paper tint behind each panel */
+    .banner-pop .panel::before{
+      content:"";
+      position:absolute; inset:0; z-index:-1;
+    }
+    .banner-pop .p1::before{ background:#ffe3ec; }
+    .banner-pop .p2::before{ background:#fff1d6; }
+    .banner-pop .p3::before{ background:#dbfff2; }
+    .banner-pop .p4::before{ background:#dfeaff; }
 
+    /* tasteful color shifts per panel */
+    .banner-pop .p1{ filter: saturate(1.10) hue-rotate(-10deg) contrast(1.05); }
+    .banner-pop .p2{ filter: saturate(1.15) hue-rotate(30deg)  contrast(1.06); }
+    .banner-pop .p3{ filter: saturate(1.20) hue-rotate(-60deg) contrast(1.06); }
+    .banner-pop .p4{ filter: saturate(1.15) hue-rotate(120deg) contrast(1.05); }
+
+    /* subtle grain so it feels cohesive */
+    .banner-pop .panel::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px);
+      background-size: 2px 2px;
+      mix-blend-mode: multiply;
+      pointer-events:none;
+    }
+
+    /* Layout */
     .wrap{display:grid;grid-template-columns:280px 1fr;gap:40px;max-width:1100px;margin:0 auto;padding:36px 28px 48px;}
     aside{position:sticky;top:24px;align-self:start;}
     .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;margin:0 0 16px;background:#ddd;}
@@ -60,39 +99,28 @@
     .group{margin:6px 0 14px} .pub{margin:10px 0} .pub .t{font-weight:600} .meta{color:var(--muted);font-size:.95em}
     .links a{margin-right:10px} .proj{margin:10px 0}
     .badge{display:inline-block;font-size:.8em;padding:2px 8px;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--muted);margin-left:6px}
-    @media (max-width:880px){ .wrap{grid-template-columns:1fr;gap:20px;padding:18px 18px 28px} aside{position:static} nav a{margin-bottom:8px} }
+
+    @media (max-width:880px){
+      .banner-pop{ height:200px; }
+      .wrap{grid-template-columns:1fr;gap:20px;padding:18px 18px 28px}
+      aside{position:static}
+      nav a{margin-bottom:8px}
+    }
   </style>
 </head>
 <body>
 
-  <!-- Pop-art axial brains banner -->
-  <div class="banner" aria-hidden="true">
-    <svg viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img">
-      <title>Pop-art axial brains</title>
-      <defs>
-        <radialGradient id="g1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ff2f6d"/><stop offset="80%" stop-color="#ff9ab6"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-        <radialGradient id="g2" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ff9f1c"/><stop offset="80%" stop-color="#ffd29a"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-        <radialGradient id="g3" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#2ec4b6"/><stop offset="80%" stop-color="#a8f1ea"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-        <radialGradient id="g4" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#4361ee"/><stop offset="80%" stop-color="#a8c0ff"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-        <mask id="axial">
-          <rect width="100%" height="100%" fill="black"/>
-          <ellipse cx="50%" cy="50%" rx="36%" ry="42%" fill="white"/>
-          <ellipse cx="50%" cy="50%" rx="26%" ry="32%" fill="black"/>
-          <ellipse cx="50%" cy="50%" rx="20%" ry="26%" fill="white"/>
-          <ellipse cx="50%" cy="50%" rx="12%" ry="18%" fill="black"/>
-          <ellipse cx="50%" cy="50%" rx="8%"  ry="12%" fill="white"/>
-        </mask>
-      </defs>
-      <g><rect x="0" y="0" width="300" height="220" fill="#ffe3ec"/><g transform="translate(0,0)" mask="url(#axial)"><rect x="0" y="0" width="300" height="220" fill="url(#g1)"/></g></g>
-      <g><rect x="300" y="0" width="300" height="220" fill="#fff1d6"/><g transform="translate(300,0)" mask="url(#axial)"><rect x="0" y="0" width="300" height="220" fill="url(#g2)"/></g></g>
-      <g><rect x="600" y="0" width="300" height="220" fill="#dbfff2"/><g transform="translate(600,0)" mask="url(#axial)"><rect x="0" y="0" width="300" height="220" fill="url(#g3)"/></g></g>
-      <g><rect x="900" y="0" width="300" height="220" fill="#dfeaff"/><g transform="translate(900,0)" mask="url(#axial)"><rect x="0" y="0" width="300" height="220" fill="url(#g4)"/></g></g>
-    </svg>
+  <!-- Pop-art axial banner (uses t1axial.jpg) -->
+  <div class="banner-pop" aria-hidden="true">
+    <span class="panel p1"></span>
+    <span class="panel p2"></span>
+    <span class="panel p3"></span>
+    <span class="panel p4"></span>
   </div>
 
   <div class="wrap">
     <aside>
-      <!-- Put LeylaPF.jpg in the repo root -->
+      <!-- Make sure LeylaPF.jpg (or .png) exists next to index.html -->
       <img class="avatar" src="LeylaPF.jpg" alt="Leyla Loued-Khenissi portrait">
       <h1>Leyla Loued-Khenissi</h1>
       <div class="role">Cognitive Neuroscientist · CHUV — Dept. of Clinical Neurosciences</div>
